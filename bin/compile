@@ -56,6 +56,11 @@ for BUILDPACK in $(cat $1/.buildpacks); do
       fi
     fi
   fi
+  export PATH="/tmp/bin:bin:vendor/bundle/ruby/1.9.1/bin:$PATH"
+  export GEM_PATH="vendor/bundle/ruby/1.9.1"
+  export GEM_HOME="$GEM_PATH"
+  export BUNDLE_GEMFILE="$1/Gemfile"
+  export BUNDLE_CONFIG="$1/.bundle/config"
 done
 
 if [ -e $1/last_pack_release.out ]; then
